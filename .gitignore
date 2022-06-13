@@ -33,3 +33,6 @@ build/
 
 ### Node.js ###
 node_modules/
+
+### Database settings ###
+database.properties
