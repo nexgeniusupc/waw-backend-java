@@ -1,9 +1,8 @@
 package ga.wawupc.springapi.employers.mapping;
 
 import ga.wawupc.springapi.employers.domain.model.entity.Company;
+import ga.wawupc.springapi.employers.resource.CompanyRequest;
 import ga.wawupc.springapi.employers.resource.CompanyResource;
-import ga.wawupc.springapi.employers.resource.CreateCompanyResource;
-import ga.wawupc.springapi.employers.resource.UpdateCompanyResource;
 import ga.wawupc.springapi.shared.mapping.EnhancedModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,11 +24,7 @@ public class CompanyMapper implements Serializable {
     return new PageImpl<>(mapper.mapList(modelList, CompanyResource.class), pageable, modelList.size());
   }
 
-  public Company toModel(CreateCompanyResource resource){
-    return mapper.map(resource, Company.class);
-  }
-
-  public Company toModel(UpdateCompanyResource resource){
+  public Company toModel(CompanyRequest resource){
     return mapper.map(resource, Company.class);
   }
 }
