@@ -9,12 +9,12 @@ public class CreateUserResource {
   @NotNull
   @NotBlank
   @Size(max = 256)
-  private String FullName;
+  private String fullName;
 
   @NotNull
   @NotBlank
   @Size(max = 256)
-  private String PreferredName;
+  private String preferredName;
 
   @NotNull
   @NotBlank
