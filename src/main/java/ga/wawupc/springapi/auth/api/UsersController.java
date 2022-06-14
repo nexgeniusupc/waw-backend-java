@@ -4,11 +4,13 @@ import ga.wawupc.springapi.auth.domain.service.UserService;
 import ga.wawupc.springapi.auth.mapping.UserMapper;
 import ga.wawupc.springapi.auth.resource.UserRequest;
 import ga.wawupc.springapi.auth.resource.UserResource;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Users")
 @RestController
 @RequestMapping("/api/v1/users")
 public class UsersController {
