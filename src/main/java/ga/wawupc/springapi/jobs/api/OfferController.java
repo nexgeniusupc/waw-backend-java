@@ -2,9 +2,8 @@ package ga.wawupc.springapi.jobs.api;
 
 import ga.wawupc.springapi.jobs.domain.service.OfferService;
 import ga.wawupc.springapi.jobs.mapping.OfferMapper;
-import ga.wawupc.springapi.jobs.resource.CreateOfferResource;
+import ga.wawupc.springapi.jobs.resource.OfferRequest;
 import ga.wawupc.springapi.jobs.resource.OfferResource;
-import ga.wawupc.springapi.jobs.resource.UpdateOfferResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +29,12 @@ public class OfferController {
   }
 
   @PostMapping
-  public OfferResource createCompany(@RequestBody CreateOfferResource offer){
+  public OfferResource createCompany(@RequestBody OfferRequest offer){
     return mapper.toResource(service.create(mapper.toModel(offer)));
   }
 
   @PutMapping("{id}")
-  public OfferResource updateCompany(@PathVariable Long id, @RequestBody UpdateOfferResource offer){
+  public OfferResource updateCompany(@PathVariable Long id, @RequestBody OfferRequest offer){
     return mapper.toResource(service.update(id, mapper.toModel(offer)));
   }
 
