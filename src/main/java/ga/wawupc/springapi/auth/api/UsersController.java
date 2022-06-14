@@ -20,27 +20,27 @@ public class UsersController {
   }
 
   @GetMapping
-  public Page<UserResource> getAllUser(Pageable pageable){
+  public Page<UserResource> getAllUser(Pageable pageable) {
     return mapper.modelListPage(service.getAll(), pageable);
   }
 
   @GetMapping("{id}")
-  public UserResource getUserById(@PathVariable Long id){
+  public UserResource getUserById(@PathVariable Long id) {
     return mapper.toResource(service.getById(id));
   }
 
   @PostMapping
-  public UserResource createCompany(@RequestBody CreateUserResource user){
+  public UserResource createCompany(@RequestBody CreateUserResource user) {
     return mapper.toResource(service.create(mapper.toModel(user)));
   }
 
   @PutMapping("{id}")
-  public UserResource updateCompany(@PathVariable Long id, @RequestBody UpdateUserResource user){
+  public UserResource updateCompany(@PathVariable Long id, @RequestBody UpdateUserResource user) {
     return mapper.toResource(service.update(id, mapper.toModel(user)));
   }
 
   @DeleteMapping("{id}")
-  public ResponseEntity<?> deleteCompany(@PathVariable Long id){
+  public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
     return service.delete(id);
   }
 }

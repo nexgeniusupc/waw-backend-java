@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class UpdateUserResource {
-private Long id;
+  private Long id;
 
   @NotNull
   @NotBlank

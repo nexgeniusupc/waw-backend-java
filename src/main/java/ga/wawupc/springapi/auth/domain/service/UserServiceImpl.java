@@ -1,8 +1,7 @@
 package ga.wawupc.springapi.auth.domain.service;
 
-import ga.wawupc.springapi.auth.model.entity.User;
 import ga.wawupc.springapi.auth.domain.persistence.UserRepository;
-import ga.wawupc.springapi.auth.domain.service.UserService;
+import ga.wawupc.springapi.auth.model.entity.User;
 import ga.wawupc.springapi.shared.exception.ResourceNotFoundException;
 import ga.wawupc.springapi.shared.exception.ResourceValidationException;
 import org.springframework.data.domain.Page;

@@ -24,7 +24,7 @@ public class User extends AuditModel {
 
   @NotNull
   @NotBlank
-  @Size(max= 256)
+  @Size(max = 256)
   @Column(unique = true)
   private String fullName;
 
