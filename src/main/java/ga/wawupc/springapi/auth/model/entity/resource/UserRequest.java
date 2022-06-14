@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-public class CreateUserResource {
+public class UserRequest {
   @NotNull
   @NotBlank
   @Size(max = 256)
@@ -23,7 +23,6 @@ public class CreateUserResource {
 
   @NotNull
   @NotBlank
-  @Size(max = 10)
   private Date birthdate;
 
   @NotNull
