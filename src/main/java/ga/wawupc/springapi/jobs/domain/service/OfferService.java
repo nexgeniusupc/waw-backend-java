@@ -9,9 +9,14 @@ import java.util.List;
 
 public interface OfferService {
   List<Offer> getAll();
+
   Page<Offer> getAll(Pageable pageable);
+
   Offer getById(Long id);
+
   Offer create(Offer company);
+
   Offer update(Long id, Offer company);
+
   ResponseEntity<?> delete(Long id);
 }

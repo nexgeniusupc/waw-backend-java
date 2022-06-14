@@ -1,6 +1,7 @@
 package ga.wawupc.springapi.jobs.resource;
 
 import lombok.*;
+
 @Getter
 @Setter
 @With

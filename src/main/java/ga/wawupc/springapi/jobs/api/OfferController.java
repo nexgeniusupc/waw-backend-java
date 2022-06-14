@@ -19,27 +19,27 @@ public class OfferController {
   }
 
   @GetMapping
-  public Page<OfferResource> getAllCompanies(Pageable pageable){
+  public Page<OfferResource> getAllCompanies(Pageable pageable) {
     return mapper.modelListPage(service.getAll(), pageable);
   }
 
   @GetMapping("{id}")
-  public OfferResource getCompanyById(@PathVariable Long id){
+  public OfferResource getCompanyById(@PathVariable Long id) {
     return mapper.toResource(service.getById(id));
   }
 
   @PostMapping
-  public OfferResource createCompany(@RequestBody OfferRequest offer){
+  public OfferResource createCompany(@RequestBody OfferRequest offer) {
     return mapper.toResource(service.create(mapper.toModel(offer)));
   }
 
   @PutMapping("{id}")
-  public OfferResource updateCompany(@PathVariable Long id, @RequestBody OfferRequest offer){
+  public OfferResource updateCompany(@PathVariable Long id, @RequestBody OfferRequest offer) {
     return mapper.toResource(service.update(id, mapper.toModel(offer)));
   }
 
   @DeleteMapping("{id}")
-  public ResponseEntity<?> deleteCompany(@PathVariable Long id){
+  public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
     return service.delete(id);
   }
 }

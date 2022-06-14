@@ -16,15 +16,15 @@ public class OfferMapper implements Serializable {
   @Autowired
   EnhancedModelMapper mapper;
 
-  public OfferResource toResource(Offer model){
+  public OfferResource toResource(Offer model) {
     return mapper.map(model, OfferResource.class);
   }
 
-  public Page<OfferResource> modelListPage(List<Offer> modelList, Pageable pageable){
+  public Page<OfferResource> modelListPage(List<Offer> modelList, Pageable pageable) {
     return new PageImpl<>(mapper.mapList(modelList, OfferResource.class), pageable, modelList.size());
   }
 
-  public Offer toModel(OfferRequest resource){
+  public Offer toModel(OfferRequest resource) {
     return mapper.map(resource, Offer.class);
   }
 

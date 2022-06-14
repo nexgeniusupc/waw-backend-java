@@ -52,7 +52,7 @@ public class OfferServiceImpl implements OfferService {
     Offer offerWithTitle = repository.findByTitle(offer.getTitle());
 
     if (offerWithTitle != null)
-      throw new ResourceValidationException(ENTITY,"A offer with the same title already exists");
+      throw new ResourceValidationException(ENTITY, "A offer with the same title already exists");
     return repository.save(offer);
   }
 

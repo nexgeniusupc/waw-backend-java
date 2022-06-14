@@ -2,6 +2,7 @@ package ga.wawupc.springapi.jobs.domain.model.entity;
 
 import ga.wawupc.springapi.shared.domain.model.AuditModel;
 import lombok.*;
+
 import javax.persistence.*;
 
 import javax.validation.constraints.NotBlank;
@@ -22,18 +23,18 @@ public class Offer extends AuditModel {
 
   @NotNull
   @NotBlank
-  @Size(max=200)
+  @Size(max = 200)
   @Column(unique = true)
   private String title;
   @NotNull
   @NotBlank
-  @Size(max=700)
+  @Size(max = 700)
   private String image;
   @NotNull
   @NotBlank
   private String description;
 
-  @Size(max=400)
+  @Size(max = 400)
   private String salaryRange;
   @NotNull
   @NotBlank
