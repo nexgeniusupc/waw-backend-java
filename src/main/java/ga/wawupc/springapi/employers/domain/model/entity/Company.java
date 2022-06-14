@@ -4,15 +4,12 @@ import ga.wawupc.springapi.shared.domain.model.AuditModel;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter
+@With
 @NoArgsConstructor
 @AllArgsConstructor
-@With
 @Entity
 @Table(name = "companies")
 public class Company extends AuditModel {
@@ -20,17 +17,12 @@ public class Company extends AuditModel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotNull
-  @NotBlank
-  @Size(max = 100)
-  @Column(unique = true)
+  @Column(length = 100, nullable = false, unique = true)
   private String name;
 
-  @Size(max = 256)
+  @Column(length = 256)
   private String address;
 
-  @NotNull
-  @NotBlank
-  @Size(max = 256)
+  @Column(length = 256, nullable = false)
   private String email;
 }
