@@ -23,6 +23,7 @@ public class Offer extends AuditModel {
   @NotNull
   @NotBlank
   @Size(max=200)
+  @Column(unique = true)
   private String title;
   @NotNull
   @NotBlank
