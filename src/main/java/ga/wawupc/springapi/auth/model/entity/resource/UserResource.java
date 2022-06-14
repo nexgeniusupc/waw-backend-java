@@ -11,8 +11,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserResource {
   private Long id;
-  private String FullName;
-  private String PreferredName;
+  private String fullName;
+  private String preferredName;
   private String email;
   private Date birthdate;
   private String location;
