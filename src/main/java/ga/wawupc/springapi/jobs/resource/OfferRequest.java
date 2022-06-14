@@ -1,10 +1,15 @@
 package ga.wawupc.springapi.jobs.resource;
-
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Getter
+@Setter
+@With
+@NoArgsConstructor
+@AllArgsConstructor
 public class OfferRequest {
 
   @NotNull
