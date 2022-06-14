@@ -28,6 +28,8 @@ private Long id;
   @Size(max = 10)
   private Date birthdate;
 
+  @NotNull
+  @NotBlank
   @Size(max = 256)
   private String location;
 

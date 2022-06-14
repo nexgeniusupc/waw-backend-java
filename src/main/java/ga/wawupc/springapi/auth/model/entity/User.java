@@ -35,6 +35,8 @@ public class User {
   @NotBlank
   private Date birthdate;
 
+  @NotNull
+  @NotBlank
   private String location;
 
   private String biography;
