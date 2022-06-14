@@ -4,9 +4,6 @@ import ga.wawupc.springapi.shared.domain.model.AuditModel;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -20,26 +17,18 @@ public class Offer extends AuditModel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotNull
-  @NotBlank
-  @Size(max = 200)
-  @Column(unique = true)
+  @Column(length = 200, nullable = false, unique = true)
   private String title;
 
-  @NotNull
-  @NotBlank
-  @Size(max = 2000)
+  @Column(length = 2000)
   private String image;
 
-  @NotNull
-  @NotBlank
-  @Size(max = 2048)
+  @Column(length = 4000, nullable = false)
   private String description;
 
-  @Size(max = 50)
+  @Column(length = 50)
   private String salaryRange;
 
-  @NotNull
-  @NotBlank
+  @Column(nullable = false)
   private Boolean status;
 }
