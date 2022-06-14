@@ -1,8 +1,7 @@
 package ga.wawupc.springapi.auth.mapping;
 
 import ga.wawupc.springapi.auth.model.entity.User;
-import ga.wawupc.springapi.auth.model.entity.resource.CreateUserResource;
-import ga.wawupc.springapi.auth.model.entity.resource.UpdateUserResource;
+import ga.wawupc.springapi.auth.model.entity.resource.UserRequest;
 import ga.wawupc.springapi.auth.model.entity.resource.UserResource;
 import ga.wawupc.springapi.shared.mapping.EnhancedModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +24,7 @@ public class UserMapper implements Serializable {
     return new PageImpl<>(mapper.mapList(modelList, UserResource.class), pageable, modelList.size());
   }
 
-  public User toModel(CreateUserResource resource) {
-    return mapper.map(resource, User.class);
-  }
-
-  public User toModel(UpdateUserResource resource) {
+  public User toModel(UserRequest resource) {
     return mapper.map(resource, User.class);
   }
 }

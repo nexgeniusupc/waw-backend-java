@@ -2,8 +2,7 @@ package ga.wawupc.springapi.auth.api;
 
 import ga.wawupc.springapi.auth.domain.service.UserService;
 import ga.wawupc.springapi.auth.mapping.UserMapper;
-import ga.wawupc.springapi.auth.model.entity.resource.CreateUserResource;
-import ga.wawupc.springapi.auth.model.entity.resource.UpdateUserResource;
+import ga.wawupc.springapi.auth.model.entity.resource.UserRequest;
 import ga.wawupc.springapi.auth.model.entity.resource.UserResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,12 +31,12 @@ public class UsersController {
   }
 
   @PostMapping
-  public UserResource createCompany(@RequestBody CreateUserResource user) {
+  public UserResource createCompany(@RequestBody UserRequest user) {
     return mapper.toResource(service.create(mapper.toModel(user)));
   }
 
   @PutMapping("{id}")
-  public UserResource updateCompany(@PathVariable Long id, @RequestBody UpdateUserResource user) {
+  public UserResource updateCompany(@PathVariable Long id, @RequestBody UserRequest user) {
     return mapper.toResource(service.update(id, mapper.toModel(user)));
   }
 
