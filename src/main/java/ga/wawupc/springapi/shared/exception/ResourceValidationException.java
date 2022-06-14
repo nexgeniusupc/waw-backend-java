@@ -32,5 +32,4 @@ public class ResourceValidationException extends RuntimeException {
   private static <T> String stringifyViolations(Set<ConstraintViolation<T>> violations) {
     return violations.stream().map(violation -> String.format("%s %s", violation.getPropertyPath(), violation.getMessage())).collect(Collectors.joining(", "));
   }
-
 }
