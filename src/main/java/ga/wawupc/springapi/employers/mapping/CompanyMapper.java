@@ -16,15 +16,15 @@ public class CompanyMapper implements Serializable {
   @Autowired
   EnhancedModelMapper mapper;
 
-  public CompanyResource toResource(Company model){
+  public CompanyResource toResource(Company model) {
     return mapper.map(model, CompanyResource.class);
   }
 
-  public Page<CompanyResource> modelListPage(List<Company> modelList, Pageable pageable){
+  public Page<CompanyResource> modelListPage(List<Company> modelList, Pageable pageable) {
     return new PageImpl<>(mapper.mapList(modelList, CompanyResource.class), pageable, modelList.size());
   }
 
-  public Company toModel(CompanyRequest resource){
+  public Company toModel(CompanyRequest resource) {
     return mapper.map(resource, Company.class);
   }
 }

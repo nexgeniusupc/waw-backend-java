@@ -9,9 +9,14 @@ import java.util.List;
 
 public interface CompanyService {
   List<Company> getAll();
+
   Page<Company> getAll(Pageable pageable);
+
   Company getById(Long id);
+
   Company create(Company company);
+
   Company update(Long id, Company company);
+
   ResponseEntity<?> delete(Long id);
 }

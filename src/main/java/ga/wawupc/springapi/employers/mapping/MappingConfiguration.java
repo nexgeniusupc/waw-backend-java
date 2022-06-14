@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration("companiesMappingConfiguration")
 public class MappingConfiguration {
   @Bean
-  public CompanyMapper companyMapper(){
+  public CompanyMapper companyMapper() {
     return new CompanyMapper();
   }
-
 }

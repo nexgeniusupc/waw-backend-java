@@ -23,27 +23,27 @@ public class CompaniesController {
 
   // @Operation(summary = "Get Companies", description = "Get all companies" )
   @GetMapping
-  public Page<CompanyResource> getAllCompanies(Pageable pageable){
+  public Page<CompanyResource> getAllCompanies(Pageable pageable) {
     return mapper.modelListPage(service.getAll(), pageable);
   }
 
   @GetMapping("{id}")
-  public CompanyResource getCompanyById(@PathVariable Long id){
+  public CompanyResource getCompanyById(@PathVariable Long id) {
     return mapper.toResource(service.getById(id));
   }
 
   @PostMapping
-  public CompanyResource createCompany(@RequestBody CompanyRequest company){
+  public CompanyResource createCompany(@RequestBody CompanyRequest company) {
     return mapper.toResource(service.create(mapper.toModel(company)));
   }
 
   @PutMapping("{id}")
-  public CompanyResource updateCompany(@PathVariable Long id, @RequestBody CompanyRequest company){
+  public CompanyResource updateCompany(@PathVariable Long id, @RequestBody CompanyRequest company) {
     return mapper.toResource(service.update(id, mapper.toModel(company)));
   }
 
   @DeleteMapping("{id}")
-  public ResponseEntity<?> deleteCompany(@PathVariable Long id){
+  public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
     return service.delete(id);
   }
 }

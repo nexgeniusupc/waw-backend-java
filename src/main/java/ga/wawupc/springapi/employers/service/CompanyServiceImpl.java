@@ -71,10 +71,10 @@ public class CompanyServiceImpl implements CompanyService {
       throw new ResourceValidationException(ENTITY, "A company with the same name already exists.");
 
     return repository.findById(id).map(company ->
-            repository.save(company
-                    .withName(request.getName())
-                    .withAddress(request.getAddress())
-                    .withEmail(request.getEmail())))
+                    repository.save(company
+                            .withName(request.getName())
+                            .withAddress(request.getAddress())
+                            .withEmail(request.getEmail())))
             .orElseThrow(() -> new ResourceNotFoundException(ENTITY, id));
   }
 
