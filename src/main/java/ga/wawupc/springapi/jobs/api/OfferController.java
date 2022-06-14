@@ -4,11 +4,13 @@ import ga.wawupc.springapi.jobs.domain.service.OfferService;
 import ga.wawupc.springapi.jobs.mapping.OfferMapper;
 import ga.wawupc.springapi.jobs.resource.OfferRequest;
 import ga.wawupc.springapi.jobs.resource.OfferResource;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Criteria")
 @RestController
 @RequestMapping("/api/v1/offers")
 public class OfferController {
