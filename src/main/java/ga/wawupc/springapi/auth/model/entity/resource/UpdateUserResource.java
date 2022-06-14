@@ -25,6 +25,7 @@ private Long id;
 
   @NotNull
   @NotBlank
+  @Size(max = 10)
   private Date birthdate;
 
   @NotNull
