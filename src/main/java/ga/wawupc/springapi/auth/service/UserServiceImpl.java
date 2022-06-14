@@ -1,8 +1,8 @@
 package ga.wawupc.springapi.auth.service;
 
+import ga.wawupc.springapi.auth.domain.model.entity.User;
 import ga.wawupc.springapi.auth.domain.persistence.UserRepository;
 import ga.wawupc.springapi.auth.domain.service.UserService;
-import ga.wawupc.springapi.auth.model.entity.User;
 import ga.wawupc.springapi.shared.exception.ResourceNotFoundException;
 import ga.wawupc.springapi.shared.exception.ResourceValidationException;
 import org.springframework.data.domain.Page;
@@ -42,19 +42,19 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User create(User user) {
-    Set<ConstraintViolation<User>> violations = validator.validate(user);
+  public User create(User request) {
+    Set<ConstraintViolation<User>> violations = validator.validate(request);
 
     if (!violations.isEmpty())
       throw new ResourceValidationException(ENTITY, violations);
 
     // Validate unique user name
-    User userWithName = repository.findByFullName(user.getFullName());
+    User userWithName = repository.findByFullName(request.getFullName());
 
     if (userWithName != null)
       throw new ResourceValidationException(ENTITY, "A user with the same name already exists.");
 
-    return repository.save(user);
+    return repository.save(request);
   }
 
   @Override

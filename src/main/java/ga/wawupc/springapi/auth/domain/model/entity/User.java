@@ -1,20 +1,16 @@
 package ga.wawupc.springapi.auth.domain.model.entity;
 
-
 import ga.wawupc.springapi.shared.domain.model.AuditModel;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Getter
 @Setter
+@With
 @NoArgsConstructor
 @AllArgsConstructor
-@With
 @Entity
 @Table(name = "users")
 public class User extends AuditModel {
@@ -22,29 +18,24 @@ public class User extends AuditModel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotNull
-  @NotBlank
-  @Size(max = 256)
-  @Column(unique = true)
+  @Column(length = 256, nullable = false)
   private String fullName;
 
-  @NotNull
-  @NotBlank
+  @Column(length = 256, nullable = false)
   private String preferredName;
 
-  @NotNull
-  @NotBlank
+  @Column(length = 254, nullable = false)
   private String email;
 
-  @NotNull
-  @NotBlank
+  @Column(nullable = false)
   private Date birthdate;
 
-  @NotNull
-  @NotBlank
+  @Column(length = 256)
   private String location;
 
+  @Column(length = 500)
   private String biography;
 
+  @Column(length = 256)
   private String about;
 }

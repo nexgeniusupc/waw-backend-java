@@ -1,6 +1,6 @@
 package ga.wawupc.springapi.auth.domain.persistence;
 
-import ga.wawupc.springapi.auth.model.entity.User;
+import ga.wawupc.springapi.auth.domain.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -2,8 +2,8 @@ package ga.wawupc.springapi.auth.api;
 
 import ga.wawupc.springapi.auth.domain.service.UserService;
 import ga.wawupc.springapi.auth.mapping.UserMapper;
-import ga.wawupc.springapi.auth.model.entity.resource.UserRequest;
-import ga.wawupc.springapi.auth.model.entity.resource.UserResource;
+import ga.wawupc.springapi.auth.resource.UserRequest;
+import ga.wawupc.springapi.auth.resource.UserResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -21,27 +21,27 @@ public class UsersController {
   }
 
   @GetMapping
-  public Page<UserResource> getAllUser(Pageable pageable) {
+  public Page<UserResource> getAll(Pageable pageable) {
     return mapper.modelListPage(service.getAll(), pageable);
   }
 
   @GetMapping("{id}")
-  public UserResource getUserById(@PathVariable Long id) {
+  public UserResource getById(@PathVariable Long id) {
     return mapper.toResource(service.getById(id));
   }
 
   @PostMapping
-  public UserResource createCompany(@RequestBody UserRequest user) {
-    return mapper.toResource(service.create(mapper.toModel(user)));
+  public UserResource create(@RequestBody UserRequest request) {
+    return mapper.toResource(service.create(mapper.toModel(request)));
   }
 
   @PutMapping("{id}")
-  public UserResource updateCompany(@PathVariable Long id, @RequestBody UserRequest user) {
-    return mapper.toResource(service.update(id, mapper.toModel(user)));
+  public UserResource update(@PathVariable Long id, @RequestBody UserRequest request) {
+    return mapper.toResource(service.update(id, mapper.toModel(request)));
   }
 
   @DeleteMapping("{id}")
-  public ResponseEntity<?> deleteCompany(@PathVariable Long id) {
+  public ResponseEntity<?> delete(@PathVariable Long id) {
     return service.delete(id);
   }
 }

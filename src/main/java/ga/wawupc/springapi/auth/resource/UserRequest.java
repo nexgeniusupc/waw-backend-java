@@ -1,10 +1,17 @@
 package ga.wawupc.springapi.auth.resource;
 
+import lombok.*;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+@Getter
+@Setter
+@With
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserRequest {
   @NotNull
   @NotBlank
@@ -18,7 +25,7 @@ public class UserRequest {
 
   @NotNull
   @NotBlank
-  @Size(max = 256)
+  @Size(max = 254)
   private String email;
 
   @NotNull
@@ -30,7 +37,7 @@ public class UserRequest {
   @Size(max = 256)
   private String location;
 
-  @Size(max = 256)
+  @Size(max = 500)
   private String biography;
 
   @Size(max = 256)

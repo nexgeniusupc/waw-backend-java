@@ -1,8 +1,8 @@
 package ga.wawupc.springapi.auth.mapping;
 
-import ga.wawupc.springapi.auth.model.entity.User;
-import ga.wawupc.springapi.auth.model.entity.resource.UserRequest;
-import ga.wawupc.springapi.auth.model.entity.resource.UserResource;
+import ga.wawupc.springapi.auth.domain.model.entity.User;
+import ga.wawupc.springapi.auth.resource.UserRequest;
+import ga.wawupc.springapi.auth.resource.UserResource;
 import ga.wawupc.springapi.shared.mapping.EnhancedModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
