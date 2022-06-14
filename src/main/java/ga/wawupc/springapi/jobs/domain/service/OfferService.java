@@ -14,9 +14,9 @@ public interface OfferService {
 
   Offer getById(Long id);
 
-  Offer create(Offer company);
+  Offer create(Offer request);
 
-  Offer update(Long id, Offer company);
+  Offer update(Long id, Offer request);
 
   ResponseEntity<?> delete(Long id);
 }

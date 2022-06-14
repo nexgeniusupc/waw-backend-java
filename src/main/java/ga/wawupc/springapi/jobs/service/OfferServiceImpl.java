@@ -42,32 +42,37 @@ public class OfferServiceImpl implements OfferService {
   }
 
   @Override
-  public Offer create(Offer offer) {
-    Set<ConstraintViolation<Offer>> violations = validator.validate(offer);
+  public Offer create(Offer request) {
+    Set<ConstraintViolation<Offer>> violations = validator.validate(request);
 
-    if (!violations.isEmpty())
+    if (!violations.isEmpty()) {
       throw new ResourceValidationException(ENTITY, violations);
+    }
 
     // Validate unique offer title
-    Offer offerWithTitle = repository.findByTitle(offer.getTitle());
+    Offer offerWithTitle = repository.findByTitle(request.getTitle());
 
-    if (offerWithTitle != null)
+    if (offerWithTitle != null) {
       throw new ResourceValidationException(ENTITY, "A offer with the same title already exists");
-    return repository.save(offer);
+    }
+
+    return repository.save(request);
   }
 
   @Override
   public Offer update(Long id, Offer request) {
     Set<ConstraintViolation<Offer>> violations = validator.validate(request);
 
-    if (!violations.isEmpty())
+    if (!violations.isEmpty()) {
       throw new ResourceValidationException(ENTITY, violations);
+    }
 
     // Validate unique offer name
     Offer offerWithTitle = repository.findByTitle(request.getTitle());
 
-    if (offerWithTitle != null && !offerWithTitle.getId().equals(id))
+    if (offerWithTitle != null && !offerWithTitle.getId().equals(id)) {
       throw new ResourceValidationException(ENTITY, "A offer with the same name already exists");
+    }
 
     return repository.findById(id).map(offer ->
                     repository.save(offer

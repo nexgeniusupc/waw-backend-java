@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration("offersMappingConfiguration")
 public class MappingConfiguration {
   @Bean
-  public OfferMapper companyMapper() {
+  public OfferMapper offerMapper() {
     return new OfferMapper();
   }
 }
