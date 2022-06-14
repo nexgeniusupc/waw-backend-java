@@ -1,4 +1,4 @@
-package ga.wawupc.springapi.auth.model.entity.resource;
+package ga.wawupc.springapi.auth.resource;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

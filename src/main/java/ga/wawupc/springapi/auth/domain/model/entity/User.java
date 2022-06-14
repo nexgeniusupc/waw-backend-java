@@ -1,4 +1,4 @@
-package ga.wawupc.springapi.auth.model.entity;
+package ga.wawupc.springapi.auth.domain.model.entity;
 
 
 import ga.wawupc.springapi.shared.domain.model.AuditModel;
