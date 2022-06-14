@@ -21,11 +21,11 @@ public class User {
 
   @NotNull
   @NotBlank
-  private String FullName;
+  private String fullName;
 
   @NotNull
   @NotBlank
-  private String PreferredName;
+  private String preferredName;
 
   @NotNull
   @NotBlank
