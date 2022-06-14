@@ -1,18 +1,21 @@
-package ga.wawupc.springapi.auth.domain.service;
+package ga.wawupc.springapi.auth.service;
 
 import ga.wawupc.springapi.auth.domain.persistence.UserRepository;
+import ga.wawupc.springapi.auth.domain.service.UserService;
 import ga.wawupc.springapi.auth.model.entity.User;
 import ga.wawupc.springapi.shared.exception.ResourceNotFoundException;
 import ga.wawupc.springapi.shared.exception.ResourceValidationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class UserServiceImpl implements UserService {
   private static final String ENTITY = "User";
   private final UserRepository repository;
