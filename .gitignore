@@ -30,6 +30,7 @@ build/
 
 ### VS Code ###
 .vscode/
+.jpb/
 
 ### Node.js ###
 node_modules/
