@@ -82,7 +82,7 @@ public class CompanyServiceImpl implements CompanyService {
   public ResponseEntity<?> delete(Long id) {
     return repository.findById(id).map(company -> {
       repository.delete(company);
-      return ResponseEntity.ok().build();
+      return ResponseEntity.noContent().build();
     }).orElseThrow(() -> new ResourceNotFoundException(ENTITY, id));
   }
 }
