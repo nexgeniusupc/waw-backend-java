@@ -36,5 +36,5 @@ build/
 node_modules/
 
 ### Database settings ###
-database.properties
+application-mysql.properties
 flyway.conf
