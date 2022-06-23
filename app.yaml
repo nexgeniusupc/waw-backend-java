@@ -1,7 +1,7 @@
 runtime: java17
 instance_class: B2
 env_variables:
-  SPRING_PROFILES_ACTIVE: "cloudsql"
+  SPRING_PROFILES_ACTIVE: "cloudsql,prod"
 basic_scaling:
   max_instances: 1
   idle_timeout: 5m
