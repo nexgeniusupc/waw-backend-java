@@ -1,4 +1,5 @@
 runtime: java17
+service: $APPENGINE_SERVICE_NAME
 instance_class: B2
 env_variables:
   SPRING_PROFILES_ACTIVE: "cloudsql,prod"
