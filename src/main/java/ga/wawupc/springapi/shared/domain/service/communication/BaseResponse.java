@@ -1,5 +1,8 @@
 package ga.wawupc.springapi.shared.domain.service.communication;
 
+import lombok.Getter;
+
+@Getter
 public abstract class BaseResponse<T> {
   private boolean success;
   private String message;
