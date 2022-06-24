@@ -43,4 +43,4 @@ jobs:
       - name: Build with Maven
         run: mvn package -B -DskipTests
       - name: Deploy to App Engine
-        run: mvn appengine:deploy -B "-DcloudSdkHome=$(dirname $(which gcloud))" "-Dapp.deploy.projectId=${{ secrets.GCP_PROJECT_ID }}"
+        run: mvn appengine:deploy -B "-DcloudSdkHome=$(dirname $(dirname $(which gcloud)))" "-Dapp.deploy.projectId=${{ secrets.GCP_PROJECT_ID }}"
