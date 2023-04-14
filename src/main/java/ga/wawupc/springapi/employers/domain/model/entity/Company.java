@@ -3,7 +3,7 @@ package ga.wawupc.springapi.employers.domain.model.entity;
 import ga.wawupc.springapi.shared.domain.model.AuditModel;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter

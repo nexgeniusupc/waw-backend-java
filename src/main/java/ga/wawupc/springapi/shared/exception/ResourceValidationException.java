@@ -3,7 +3,7 @@ package ga.wawupc.springapi.shared.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolation;
 import java.util.Set;
 import java.util.stream.Collectors;
 
