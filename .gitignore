@@ -29,7 +29,8 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-.vscode/
+.vscode/*
+!.vscode/extensions.json
 .jpb/
 
 ### Node.js ###
@@ -39,3 +40,6 @@ node_modules/
 application-mysql.properties
 database.properties
 flyway.conf
+
+### Miscellaneous ###
+.cache
