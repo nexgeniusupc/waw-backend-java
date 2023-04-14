@@ -3,17 +3,32 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>3.0.5</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
+
   <groupId>ga.wawupc</groupId>
   <artifactId>SpringApi</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>WawSpringAPI</name>
-  <description>WawSpringAPI</description>
+  <version>0.0.0-SNAPSHOT</version>
+
+  <name>SpringApi</name>
+  <description>WAW Backend Application, using Java and Spring Boot</description>
+
+  <scm>
+    <url>https://github.com/nexgeniusupc/waw-backend-java.git</url>
+  </scm>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://spdx.org/licenses/MIT.html</url>
+    </license>
+  </licenses>
+
   <properties>
     <java.version>17</java.version>
   </properties>
