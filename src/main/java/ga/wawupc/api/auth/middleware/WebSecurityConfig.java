@@ -1,6 +1,6 @@
-package ga.wawupc.springapi.auth.middleware;
+package ga.wawupc.api.auth.middleware;
 
-import ga.wawupc.springapi.auth.domain.service.UserService;
+import ga.wawupc.api.auth.domain.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

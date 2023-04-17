@@ -1,7 +1,7 @@
-package ga.wawupc.springapi.auth.middleware;
+package ga.wawupc.api.auth.middleware;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import ga.wawupc.springapi.auth.domain.model.entity.User;
+import ga.wawupc.api.auth.domain.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;

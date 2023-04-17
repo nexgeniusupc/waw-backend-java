@@ -1,4 +1,4 @@
-package ga.wawupc.springapi.auth.middleware;
+package ga.wawupc.api.auth.middleware;
 
 import io.jsonwebtoken.*;
 import org.apache.commons.lang3.time.DateUtils;
