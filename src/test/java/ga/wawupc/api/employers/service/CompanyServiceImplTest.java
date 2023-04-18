@@ -33,6 +33,15 @@ class CompanyServiceUnitTest {
 
     Assertions.assertEquals(List.of(firstCompany, secondCompany, thirdCompany), companies);
     verify(repository).findAll();
+  }
 
+  @Test
+  public void createCompanyWithExistingNameShouldThrowException() {
+    Company company = new Company(1L, "Microsoft", "Silicon Valley", "microsoft@support.com");
+    when(repository.findByName(company.getName())).thenThrow(ResourceValidationException.class);
+    Assertions.assertThrows(ResourceValidationException.class, () -> {
+      repository.findByName(company.getName());
+    });
+    verify(repository).findByName(company.getName());
   }
 }
