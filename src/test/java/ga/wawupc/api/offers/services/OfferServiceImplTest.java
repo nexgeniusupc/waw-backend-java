@@ -15,4 +15,9 @@ public class OfferServiceImplTest {
   @InjectMocks
   private OfferServiceImpl offerServiceImpl;
   Offer offer;
+
+  @BeforeEach
+  public void setUp(){
+    offer = new Offer(1L, "Full Stack Developer" , "https://example.com/image.jpg","We're looking for a full stack developer with experience in Java and Angular.", "$125k-$127k", true);
+  }
 }
