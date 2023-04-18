@@ -11,6 +11,7 @@ jobs:
   appengine:
     name: App Engine
     runs-on: ubuntu-latest
+    if: false
     permissions:
       contents: read
       id-token: write
