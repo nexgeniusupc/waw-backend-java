@@ -19,6 +19,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Install dependencies
+        run: mvn install -B -V -DskipTests=true -Dmaven.javadoc.skip=true
       - name: Build with Maven
         run: mvn compile -B
   tests:
@@ -33,5 +35,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: Install dependencies
+        run: mvn install -B -V -DskipTests=true -Dmaven.javadoc.skip=true
       - name: Run tests
         run: mvn test -B -Dspring.profiles.active=h2
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
