@@ -34,4 +34,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Run tests
-        run: mvn test -B
+        run: mvn test -B -Dspring.profiles.active=h2
