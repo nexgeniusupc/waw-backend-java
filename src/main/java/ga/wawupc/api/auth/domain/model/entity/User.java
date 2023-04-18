@@ -4,7 +4,14 @@ import ga.wawupc.api.shared.domain.model.AuditModel;
 import lombok.*;
 
 import jakarta.persistence.*;
+
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Getter
 @Setter
@@ -13,7 +20,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class User extends AuditModel {
+public class User extends AuditModel implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -41,4 +48,34 @@ public class User extends AuditModel {
 
   @Column(length = 60, nullable = false)
   private String password;
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return Arrays.asList(new SimpleGrantedAuthority("USER"));
+  }
+
+  @Override
+  public String getUsername() {
+    return this.email;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
 }
