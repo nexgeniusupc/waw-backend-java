@@ -8,6 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
 public class OfferServiceImplTest {
   @Mock
@@ -19,5 +22,12 @@ public class OfferServiceImplTest {
   @BeforeEach
   public void setUp(){
     offer = new Offer(1L, "Full Stack Developer" , "https://example.com/image.jpg","We're looking for a full stack developer with experience in Java and Angular.", "$125k-$127k", true);
+  }
+
+  @Test
+  public void FindByIdShouldReturnSingleOffer() {
+    when(offerRepository.findById(1L)).thenReturn(Optional.of(offer));
+    Offer response = offerServiceImpl.getById(1L);
+    assertEquals(1L, response.getId());
   }
 }
