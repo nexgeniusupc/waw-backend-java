@@ -1,6 +1,5 @@
 package ga.wawupc.api.employers.service;
 
-import autovalue.shaded.kotlin.collections.EmptySet;
 import ga.wawupc.api.employers.domain.model.entity.Company;
 import ga.wawupc.api.employers.domain.persistence.CompanyRepository;
 import ga.wawupc.api.shared.exception.ResourceValidationException;
@@ -16,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
