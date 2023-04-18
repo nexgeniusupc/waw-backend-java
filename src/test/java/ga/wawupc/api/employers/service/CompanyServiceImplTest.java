@@ -21,5 +21,18 @@ class CompanyServiceUnitTest {
   private CompanyRepository repository;
   @InjectMocks
   private CompanyServiceImpl service;
+  @Test
+  public void getAllShouldReturnCompaniesList() {
+    Company firstCompany = new Company(1L,"Google Inc.", "Silicon Valley", "google@dev.com");
+    Company secondCompany = new Company(1L,"Amazon Inc.", "Silicon Valley", "amazon@dev.com");
+    Company thirdCompany = new Company(1L,"Apple Inc.", "Silicon Valley", "apple@dev.com");
 
+    when(repository.findAll()).thenReturn(List.of(firstCompany, secondCompany, thirdCompany));
+
+    List<Company> companies = service.getAll();
+
+    Assertions.assertEquals(List.of(firstCompany, secondCompany, thirdCompany), companies);
+    verify(repository).findAll();
+
+  }
 }
