@@ -6,9 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
+import org.mockito.internal.matchers.Null;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,5 +32,6 @@ public class OfferServiceImplTest {
     when(offerRepository.findById(1L)).thenReturn(Optional.of(offer));
     Offer response = offerServiceImpl.getById(1L);
     assertEquals(1L, response.getId());
+    verify(offerRepository).findById(offer.getId());
   }
 }
