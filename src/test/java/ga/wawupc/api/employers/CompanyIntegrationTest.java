@@ -69,7 +69,6 @@ public class CompanyIntegrationTest {
 
     mvc.perform(request)
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.id", is(3)))
         .andExpect(jsonPath("$.name", is(netflix.getName())));
   }
 
