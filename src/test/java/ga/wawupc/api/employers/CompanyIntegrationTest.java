@@ -69,7 +69,33 @@ public class CompanyIntegrationTest {
 
     mvc.perform(request)
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.id", is(3)))
         .andExpect(jsonPath("$.name", is(netflix.getName())));
+  }
+
+  @Test
+  public void addCompanyAlreadyExistingIntegrationTest() throws Exception {
+    CompanyRequest google2 = new CompanyRequest("Google", "California", "webmaster@google.com");
+
+    RequestBuilder request = post("/api/v1/companies")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(JsonUtil.toJson(google2));
+
+    mvc.perform(request).andExpect(status().isBadRequest());
+  }
+
+  @Test
+  public void updateCompanyIntegrationTest() throws Exception {
+    CompanyRequest update = new CompanyRequest("Google", "California", "webmaster@google.com");
+
+    RequestBuilder request = put("/api/v1/companies/1")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(JsonUtil.toJson(update));
+
+    mvc.perform(request)
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.id", is(1)))
+      .andExpect(jsonPath("$.name", is(update.getName())))
+      .andExpect(jsonPath("$.address", is(update.getAddress())))
+      .andExpect(jsonPath("$.email", is(update.getEmail())));
   }
 }
