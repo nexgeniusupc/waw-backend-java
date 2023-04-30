@@ -20,9 +20,16 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Install dependencies
-        run: mvn install -B -V -DskipTests=true -Dmaven.javadoc.skip=true
+        run: mvn dependency:go-offline -B
       - name: Build with Maven
         run: mvn compile -B
+      - name: Package with Maven
+        run: mvn package -B -DskipTests=true
+      - name: Upload artifacts to GitHub
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-artifact
+          path: target/*.jar
   tests:
     name: Tests
     runs-on: ubuntu-latest
@@ -36,7 +43,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Install dependencies
-        run: mvn install -B -V -DskipTests=true -Dmaven.javadoc.skip=true
+        run: mvn dependency:go-offline -B
       - name: Run tests
         run: mvn test -B -Dspring.profiles.active=h2
       - name: Upload coverage reports to Codecov
