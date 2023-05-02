@@ -52,4 +52,6 @@ class CompanyServiceUnitTest {
 
     Assertions.assertThrows(ResourceValidationException.class, () -> service.create(company2));
   }
+
+ 
 }

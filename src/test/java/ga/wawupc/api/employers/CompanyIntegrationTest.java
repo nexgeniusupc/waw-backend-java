@@ -98,4 +98,13 @@ public class CompanyIntegrationTest {
       .andExpect(jsonPath("$.address", is(update.getAddress())))
       .andExpect(jsonPath("$.email", is(update.getEmail())));
   }
+
+  @Test
+  public void deleteCompanyIntegrationTest() throws Exception {
+    Company company = repository.findByName(google.getName());
+
+    RequestBuilder request = delete("/api/v1/companies/" + company.getId().toString());
+
+    mvc.perform(request).andExpect(status().isNoContent());
+  }
 }
