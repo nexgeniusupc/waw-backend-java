@@ -101,13 +101,10 @@ public class CompanyIntegrationTest {
 
   @Test
   public void deleteCompanyIntegrationTest() throws Exception {
-    CompanyRequest delete = new CompanyRequest("Google", "California", "webmaster@google.com");
-    
-    RequestBuilder request = delete("/api/v1/companies/1")
-    .contentType(MediaType.APPLICATION_JSON)
-    .content(JsonUtil.toJson(delete));
+    Company company = repository.findByName(google.getName());
 
-    mvc.perform(request).andExpect(status().isNotFound());
+    RequestBuilder request = delete("/api/v1/companies/" + company.getId().toString());
 
+    mvc.perform(request).andExpect(status().isNoContent());
   }
 }
