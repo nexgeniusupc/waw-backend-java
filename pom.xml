@@ -12,10 +12,11 @@
   </parent>
 
   <groupId>ga.wawupc</groupId>
-  <artifactId>api</artifactId>
+  <artifactId>api-parent</artifactId>
   <version>0.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
-  <name>api</name>
+  <name>api-parent</name>
   <description>WAW Backend Application, using Java and Spring Boot</description>
 
   <scm>
