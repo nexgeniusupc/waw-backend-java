@@ -39,6 +39,7 @@
 
   <modules>
     <module>api-legacy</module>
+    <module>api-shared</module>
   </modules>
 
   <dependencyManagement>

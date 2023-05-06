@@ -1,4 +1,4 @@
-package ga.wawupc.api;
+package ga.wawupc.api.shared;
 
 import java.io.IOException;
 

@@ -1,9 +1,10 @@
 package ga.wawupc.api.offers;
 
-import ga.wawupc.api.JsonUtil;
 import ga.wawupc.api.jobs.domain.model.entity.Offer;
 import ga.wawupc.api.jobs.domain.persistence.OfferRepository;
 import ga.wawupc.api.jobs.resource.OfferRequest;
+import ga.wawupc.api.shared.JsonUtil;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
