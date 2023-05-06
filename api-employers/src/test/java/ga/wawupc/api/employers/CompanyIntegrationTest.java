@@ -18,10 +18,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 
-import ga.wawupc.api.JsonUtil;
 import ga.wawupc.api.employers.domain.model.entity.Company;
 import ga.wawupc.api.employers.domain.persistence.CompanyRepository;
 import ga.wawupc.api.employers.resource.CompanyRequest;
+import ga.wawupc.api.shared.JsonUtil;
 
 @SpringBootTest
 @AutoConfigureMockMvc
