@@ -14,7 +14,8 @@
   <artifactId>api-legacy</artifactId>
   <packaging>jar</packaging>
 
-  <name>api-legacy</name>
+  <name>Legacy API - api-legacy</name>
+  <description>Legacy WAW Backend Application, deployed as monolith using Java and Spring Boot</description>
 
   <dependencies>
     <dependency>

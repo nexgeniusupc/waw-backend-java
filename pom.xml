@@ -16,7 +16,7 @@
   <version>0.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>api-parent</name>
+  <name>Parent API Project - api-parent</name>
   <description>WAW Backend Application, using Java and Spring Boot</description>
 
   <scm>
