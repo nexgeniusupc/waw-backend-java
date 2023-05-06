@@ -1,26 +1,62 @@
-# Getting Started
+# WAW Backend Application
 
-### Reference Documentation
+WAW Backend Application, using Java and Spring Boot.
 
-For further reference, please consider the following sections:
+Currently, this app is being refactored using a microservices architecture.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.0/maven-plugin/reference/html/#build-image)
-* [Flyway Migration](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#howto.data-initialization.migration-tool.flyway)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-* [Validation](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#io.validation)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#web)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.7.0/reference/htmlsingle/#using.devtools)
+## Guides
 
-### Guides
+### Sub-project creation
 
-The following guides illustrate how to use some features concretely:
+To create a new sub-project for a new microservice, you can use the following command, replacing the values as needed.
 
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Validation](https://spring.io/guides/gs/validating-form-input/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
+```powershell
+# Windows
 
+# Create sub-project
+& .\mvnw.cmd archetype:generate `
+  "-DarchetypeGroupId=org.apache.maven.archetypes" `
+  "-DarchetypeArtifactId=maven-archetype-quickstart" `
+  "-DgroupId=ga.wawupc" `
+  "-DartifactId=api-<service-name>" `
+  "-Dpackage=ga.wawupc.api.<service-name>" `
+  "-Dversion=0.0.0-SNAPSHOT"
+
+# For example, if you have a service named `weather`:
+& .\mvnw.cmd archetype:generate `
+  "-DarchetypeGroupId=org.apache.maven.archetypes" `
+  "-DarchetypeArtifactId=maven-archetype-quickstart" `
+  "-DgroupId=ga.wawupc" `
+  "-DartifactId=api-weather" `
+  "-Dpackage=ga.wawupc.api.weather" `
+  "-Dversion=0.0.0-SNAPSHOT"
+```
+
+```bash
+# Linux
+
+# Install the archetype to the local repository
+./mvnw install -pl api-service-archetype
+
+# Create sub-project
+./mvnw archetype:generate \
+  -DarchetypeGroupId=org.apache.maven.archetypes \
+  -DarchetypeArtifactId=maven-archetype-quickstart \
+  -DgroupId=ga.wawupc \
+  -DartifactId=api-<service-name> \
+  -Dpackage=ga.wawupc.api.<service-name>
+  -Dversion=0.0.0-SNAPSHOT
+
+# For example, if you have a service named `weather`:
+./mvnw archetype:generate \
+  -DarchetypeGroupId=org.apache.maven.archetypes \
+  -DarchetypeArtifactId=maven-archetype-quickstart \
+  -DgroupId=ga.wawupc \
+  -DartifactId=api-weather \
+  -Dpackage=ga.wawupc.api.weather \
+  -Dversion=0.0.0-SNAPSHOT
+```
+
+## License
+
+[MIT](LICENSE)
