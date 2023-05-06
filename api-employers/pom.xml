@@ -97,6 +97,7 @@
       <groupId>ga.wawupc</groupId>
       <artifactId>api-shared</artifactId>
       <classifier>tests</classifier>
+      <type>test-jar</type>
       <version>${project.version}</version>
       <scope>test</scope>
     </dependency>

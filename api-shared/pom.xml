@@ -44,10 +44,9 @@
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-install-plugin</artifactId>
+        <artifactId>maven-jar-plugin</artifactId>
         <executions>
           <execution>
-            <phase>package</phase>
             <goals>
               <goal>test-jar</goal>
             </goals>
