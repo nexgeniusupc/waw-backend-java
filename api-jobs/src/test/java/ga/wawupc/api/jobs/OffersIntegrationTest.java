@@ -1,4 +1,4 @@
-package ga.wawupc.api.offers;
+package ga.wawupc.api.jobs;
 
 import ga.wawupc.api.jobs.domain.model.entity.Offer;
 import ga.wawupc.api.jobs.domain.persistence.OfferRepository;

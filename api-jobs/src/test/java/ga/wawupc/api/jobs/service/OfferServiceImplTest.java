@@ -1,4 +1,4 @@
-package ga.wawupc.api.offers.service;
+package ga.wawupc.api.jobs.service;
 
 
 import ga.wawupc.api.jobs.domain.model.entity.Offer;

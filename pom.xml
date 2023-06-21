@@ -41,6 +41,7 @@
     <module>api-legacy</module>
     <module>api-shared</module>
     <module>api-employers</module>
+    <module>api-jobs</module>
   </modules>
 
   <dependencyManagement>
