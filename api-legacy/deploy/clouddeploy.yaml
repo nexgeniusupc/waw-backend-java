@@ -1,0 +1,29 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: api-legacy-delivery-pipeline
+description: Legacy API Pipeline
+serialPipeline:
+  stages:
+    - targetId: api-legacy-run-dev
+      profiles: [dev]
+    - targetId: api-legacy-run-prod
+      profiles: [prod]
+
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: api-legacy-run-dev
+description: Cloud Run development service
+run:
+  location: projects/waw-nexgenius/locations/us-central1
+
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: api-legacy-run-prod
+description: Cloud Run production service
+run:
+  location: projects/waw-nexgenius/locations/us-central1

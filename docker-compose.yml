@@ -1,0 +1,60 @@
+# Development deployment with local Docker
+version: '3'
+
+volumes:
+  db-data:
+
+
+networks:
+  main-network:
+
+
+services:
+  database:
+    image: mysql:8
+    # NOTE: Use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # This is used to simulate the environment of Cloud SQL, as it uses "mysql_native_password" even for MySQL 8.0: https://cloud.google.com/sql/docs/mysql/features#mysql8-authentication
+    # In production, IAM user authentication should be used for more security
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: mysqladmin ping -h localhost -uroot -proot
+      start_period: 60s
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks:
+      - main-network
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./config/mysql/init/init-dev-databases.sql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  api-legacy:
+    image: us-central1-docker.pkg.dev/waw-nexgenius/waw-services/api-legacy:latest
+    networks:
+      - main-network
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - 8080:8080
+    environment:
+      MYSQL_HOST: database
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      SPRING_PROFILES_ACTIVE: mysqlenv,prod
+  api-employers:
+    image: us-central1-docker.pkg.dev/waw-nexgenius/waw-services/api-employers:latest
+    networks:
+      - main-network
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - 8081:8080
+    environment:
+      MYSQL_HOST: database
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      SPRING_PROFILES_ACTIVE: mysqlenv,prod
