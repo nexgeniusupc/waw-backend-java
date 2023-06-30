@@ -1,0 +1,15 @@
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: api-jobs-deploy
+profiles:
+  - name: dev
+    manifests:
+      rawYaml:
+        - run-dev.yaml
+  - name: prod
+    manifests:
+      rawYaml:
+        - run-prod.yaml
+deploy:
+  cloudrun: {}

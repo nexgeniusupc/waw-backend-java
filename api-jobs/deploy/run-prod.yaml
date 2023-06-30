@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/redhat-developer/vscode-knative/main/schemas/knservice.json
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: api-jobs-prod
+  namespace: '871369411535'
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '1'
+    spec:
+      containers:
+        - image: app-image
