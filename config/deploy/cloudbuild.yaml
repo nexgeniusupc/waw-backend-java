@@ -80,6 +80,3 @@ steps:
 
 options:
   dynamic_substitutions: true
-
-substitutions:
-  _SERVICE_NAME: api-jobs
