@@ -8,7 +8,8 @@ gcloud services enable `
   clouddeploy.googleapis.com `
   cloudbuild.googleapis.com `
   storage-component.googleapis.com `
-  run.googleapis.com
+  run.googleapis.com `
+  secretmanager.googleapis.com
 
 # Create Docker repository with Artifact Registry
 gcloud artifacts repositories create waw-services `
@@ -17,6 +18,9 @@ gcloud artifacts repositories create waw-services `
 
 # TODO: Create Cloud Build cache bucket in Cloud Storage
 # See more info in Cloud Build scripts
+
+# TODO: Create Cloud Build sources bucket in Cloud Storage
+# Normally named `${PROJECT_ID}_cloudbuild`
 
 # TODO: Create Cloud Deploy pipelines
 # gcloud deploy apply --file .\api-employers\deploy\clouddeploy.yaml --region us-central1
