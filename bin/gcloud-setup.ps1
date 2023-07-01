@@ -29,6 +29,3 @@ gcloud artifacts repositories create waw-services `
 
 # TODO: Setup a custom service account that will be used to access multiple services from Cloud Run,
 # including Cloud SQL, Pub/Sub, Secret Manager and this account could have the permission to
-
-# TODO: Create releases
-# gcloud deploy releases create test-release-003 --region=us-central1 --delivery-pipeline=api-legacy-delivery-pipeline "--images=app-image=us-central1-docker.pkg.dev/waw-nexgenius/waw-services/api-legacy@sha256:35656776df66068ae1ee33b2ccc4926ce7311991bfa9d514e355dd5d90a64224" --skaffold-file=./config/deploy/skaffold.yaml
