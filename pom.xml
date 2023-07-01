@@ -184,7 +184,7 @@
         <artifactId>jib-maven-plugin</artifactId>
         <configuration>
           <to>
-            <image>us-central1-docker.pkg.dev/waw-nexgenius/waw-services/${project.artifactId}</image>
+            <image>${project.artifactId}</image>
           </to>
           <container>
             <ports>

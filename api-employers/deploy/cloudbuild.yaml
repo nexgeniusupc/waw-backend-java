@@ -1,0 +1,51 @@
+steps:
+  - name: maven:3.9.1-eclipse-temurin-17
+    entrypoint: mvn
+    args: ['-B', 'dependency:go-offline']
+    volumes:
+      - name: user.home
+        path: /root
+  - name: maven:3.9.1-eclipse-temurin-17
+    entrypoint: mvn
+    args:
+      [
+        '-B',
+        'package',
+        'jib:build',
+        '-pl',
+        '${_SERVICE_NAME}',
+        '-am',
+        '-DskipTests=true',
+        '-Dimage=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}',
+      ]
+    volumes:
+      - name: user.home
+        path: /root
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: gcloud
+    args:
+      [
+        'deploy',
+        'releases',
+        'create',
+        'release-${_RELEASE_TIMESTAMP}',
+        '--skaffold-file',
+        './${_SERVICE_NAME}/deploy/skaffold.yaml',
+        '--delivery-pipeline',
+        '${_SERVICE_NAME}-delivery-pipeline',
+        '--region',
+        '${_REGION}',
+        '--images',
+        'app-image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}',
+      ]
+
+images:
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}
+
+options:
+  dynamic_substitutions: true
+
+substitutions:
+  _REGION: us-central1
+  _REPOSITORY_NAME: waw-services
+  _SERVICE_NAME: api-employers
