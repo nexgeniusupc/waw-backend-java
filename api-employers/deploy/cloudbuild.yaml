@@ -48,7 +48,7 @@ steps:
         'deploy',
         'releases',
         'create',
-        'release-${_RELEASE_TIMESTAMP}',
+        'release-$$DATE-$$TIME',
         '--skaffold-file',
         './${_SERVICE_NAME}/deploy/skaffold.yaml',
         '--delivery-pipeline',
