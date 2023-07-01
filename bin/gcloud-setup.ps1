@@ -1,3 +1,8 @@
+#!/usr/bin/env pwsh
+
+# $PROJECT_ID=$(gcloud config get-value project)
+# $PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(projectNumber)')
+
 $DEFAULT_REGION = "us-central1"
 # $DEFAULT_ZONE = "$DEFAULT_REGION-a"
 
