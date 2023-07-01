@@ -1,15 +1,32 @@
 steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    dir: /root
+    entrypoint: bash
+    args:
+      - '-c'
+      - (gsutil cp gs://${_GCS_CACHE_BUCKET}/${BRANCH_NAME}/m2.tar.gz /tmp/m2.tar.gz && tar -xzf /tmp/m2.tar.gz) || echo 'Maven cache not found'
+    volumes:
+      - name: maven-cache
+        path: /root/.m2
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    dir: /root
+    entrypoint: bash
+    args:
+      - '-c'
+      - (gsutil cp gs://${_GCS_CACHE_BUCKET}/${BRANCH_NAME}/jib.tar.gz /tmp/jib.tar.gz && tar -xzf /tmp/jib.tar.gz) || echo 'Jib cache not found'
+    volumes:
+      - name: jib-cache
+        path: /root/.cache/google-cloud-tools-java/jib
   - name: maven:3.9.1-eclipse-temurin-17
     entrypoint: mvn
-    args: ['-B', 'dependency:go-offline']
+    args: ['dependency:go-offline', '-B']
     volumes:
-      - name: user.home
-        path: /root
+      - name: maven-cache
+        path: /root/.m2
   - name: maven:3.9.1-eclipse-temurin-17
     entrypoint: mvn
     args:
       [
-        '-B',
         'package',
         'jib:build',
         '-pl',
@@ -17,10 +34,13 @@ steps:
         '-am',
         '-DskipTests=true',
         '-Dimage=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}',
+        '-B',
       ]
     volumes:
-      - name: user.home
-        path: /root
+      - name: maven-cache
+        path: /root/.m2
+      - name: jib-cache
+        path: /root/.cache/google-cloud-tools-java/jib
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: gcloud
     args:
@@ -38,9 +58,24 @@ steps:
         '--images',
         'app-image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}',
       ]
-
-images:
-  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    dir: /root
+    entrypoint: bash
+    args:
+      - '-c'
+      - (tar -czf /tmp/m2.tar.gz .m2 && gsutil cp /tmp/m2.tar.gz gs://${_GCS_CACHE_BUCKET}/${BRANCH_NAME}/m2.tar.gz) || echo 'Failed to save Maven cache'
+    volumes:
+      - name: maven-cache
+        path: /root/.m2
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    dir: /root
+    entrypoint: bash
+    args:
+      - '-c'
+      - (tar -czf /tmp/jib.tar.gz .cache/google-cloud-tools-java/jib && gsutil cp /tmp/jib.tar.gz gs://${_GCS_CACHE_BUCKET}/${BRANCH_NAME}/jib.tar.gz) || echo 'Failed to save Jib cache'
+    volumes:
+      - name: jib-cache
+        path: /root/.cache/google-cloud-tools-java/jib
 
 options:
   dynamic_substitutions: true
@@ -49,3 +84,4 @@ substitutions:
   _REGION: us-central1
   _REPOSITORY_NAME: waw-services
   _SERVICE_NAME: api-employers
+  _GCS_CACHE_BUCKET: caches_cloudbuild
