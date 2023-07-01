@@ -1,3 +1,4 @@
+# Cache setup was modified from https://github.com/coollog/jib-google-cloud-build/blob/master/cloudbuild-jib-maven%2Bcache.yaml
 steps:
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     dir: /root
