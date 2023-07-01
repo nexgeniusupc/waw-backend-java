@@ -15,6 +15,9 @@ gcloud artifacts repositories create waw-services `
   --repository-format=docker `
   --location="$DEFAULT_REGION"
 
+# TODO: Create Cloud Build cache bucket in Cloud Storage
+# See more info in Cloud Build scripts
+
 # TODO: Create Cloud Deploy pipelines
 # gcloud deploy apply --file .\api-employers\deploy\clouddeploy.yaml --region us-central1
 
